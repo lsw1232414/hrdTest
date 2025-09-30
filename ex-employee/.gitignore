@@ -1,2 +1,6 @@
-/bin/
-/.metadata/
+.metadata/
+.classpath
+.project
+.settings/
+bin/
+lib/
