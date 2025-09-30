@@ -1,6 +1,0 @@
-package com.lsw;
-
-public class DBMain {
-	
-	new ex1();
-}

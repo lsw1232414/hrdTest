@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+E:\s08_mariaDB\mariaDB2509\hrdTest\ex-employee\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
-3451576776.index
-3413270776.index
-562498832.index
