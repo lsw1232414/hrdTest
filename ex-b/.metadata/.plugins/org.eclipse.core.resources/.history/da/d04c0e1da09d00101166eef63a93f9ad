@@ -1,0 +1,5 @@
+package com.lsw.conn;
+
+public class DBConnection {
+
+}

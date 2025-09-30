@@ -1,0 +1,31 @@
+package com.ex;
+
+import com.lsw.conn.DBConnection;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Ex2 {
+
+    public Ex2() {
+        String sql = "SELECT EmpNO, EmpName, Salary FROM Employee WHERE Dept = '개발부'";
+
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            if (conn == null) return;
+
+            System.out.println("=== 부서가 개발부인 사원 ===");
+            while (rs.next()) {
+                System.out.println(rs.getInt("EmpID") + " | " +
+                                   rs.getString("EmpName") + " | " +
+                                   rs.getInt("Salary"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

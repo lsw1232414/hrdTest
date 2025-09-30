@@ -1,0 +1,37 @@
+package com.ex;
+
+import com.lsw.conn.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class Ex4 {
+
+    public Ex4() {
+
+        try (Connection conn = DBConnection.getConnection()) {
+
+            if (conn == null) return;
+
+            // 1️⃣ 수정: 이순신 급여 3,500,000
+            String updateSql = "UPDATE Employee SET Salary = ? WHERE EmpName = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(updateSql)) {
+                pstmt.setInt(1, 3500000);
+                pstmt.setString(2, "이순신");
+                int count = pstmt.executeUpdate();
+                System.out.println("=== 급여 수정 완료: " + count + "건 ===");
+            }
+
+            // 2️⃣ 삭제: EmpID = 1
+            String deleteSql = "DELETE FROM Employee WHERE EmpID = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(deleteSql)) {
+                pstmt.setInt(1, 1);
+                int count = pstmt.executeUpdate();
+                System.out.println("=== 사원 삭제 완료: " + count + "건 ===");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
